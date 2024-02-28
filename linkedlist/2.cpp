@@ -10,7 +10,15 @@ using namespace std;
     this->data= data;
     this->next = NULL;
   }
+  ~Node(){
+    int val = this->data;
+    if(this->next!=NULL){
+      delete next;
+      next =NULL;
+    }
+  }
  };
+
 void insertAtHead(Node* &head, int d){
   Node* temp = new Node(d);
   temp->next= head;
@@ -42,6 +50,28 @@ void insertAtMiddle(Node* &head, Node* &tail, int position, int d){
   temp->next = nodetoInsert;
 }
 
+void deletionNode(int position, Node* &head){
+  if(position==1){
+    Node* temp = head;
+    head = head->next;
+    temp->next = NULL;
+    delete(temp);
+  }
+  else{
+    Node* curr= head;
+    Node* prev= NULL;
+    int cnt =1;
+    while(cnt<position){
+      prev = curr;
+      curr= curr->next;
+      cnt++;
+    }
+    prev->next= curr->next;
+    curr->next = NULL;
+    delete(curr);
+  }
+}
+
 void printLL(Node* &head){
   if(head == NULL){
     cout<<"LL is empty"<<endl;
@@ -67,6 +97,9 @@ int main(){
     insertAtTail(tail, 14);
     insertAtTail(tail, 15);
     insertAtMiddle(head, tail, 4, 0);
+    printLL(head);
+
+    deletionNode(4, head);
     printLL(head);
  
   return 0;
