@@ -108,7 +108,7 @@ Node* merge(Node* left, Node* right){
     Node* temp  = ans;
 
     while(left!=nullptr && right!= NULL){
-        if(left->data<right->data){
+        if(left->data < right->data){
             temp ->next = left;
             temp = left;
             left = left->next;
@@ -149,7 +149,7 @@ Node* findMid(Node* head){
 
 //mergesort
 Node* mergesort(Node* &head){
-    if(head ==NULL){
+    if(head ==NULL || head->next == NULL){
         return head;
     }
     Node* mid = findMid(head);
@@ -179,10 +179,12 @@ int main(){
     insertAtTail(tail, 4);
     printLL(head);
 
-    Node* ans = mergesort(head);
+    Node* ans = new Node(-1);
+    Node* ans1= ans;
+    ans1->next =   mergesort(head);
 
     cout<<"merge sorted LL is "<<endl;
-    printLL(ans);
+    printLL(ans->next);
  
  
   return 0;
