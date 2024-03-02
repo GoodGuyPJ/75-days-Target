@@ -97,6 +97,18 @@ void  insertAttail(Node* &tail,  Node* &head, int d){
     }
  }
 
+bool iscircular(Node* &head){
+  if(head==NULL) return true;
+
+  Node* temp = head->next;
+  while(temp!=NULL && temp!=head){
+    temp= temp->next;
+  }
+  if(temp== head) return true;
+
+  return false;
+}
+
  void printLL(Node* &head){
   if(head == NULL){
     cout<<"LL is empty"<<endl;
@@ -130,6 +142,9 @@ int main(){
     deletionLL(head, tail, 4);
     
     printLL(head);
+
+    bool ans = iscircular(head);
+    cout<<"is circular is or not "<<ans;
 
 
   return 0;

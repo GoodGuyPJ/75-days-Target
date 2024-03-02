@@ -68,6 +68,18 @@ void deleteLL(Node* &tail, int val){
   cout<<endl;
 }
 
+bool iscircular(Node* &head){
+  if(head==NULL) return true;
+
+  Node* temp = head->next;
+  while(temp!=NULL && temp!=head){
+    temp= temp->next;
+  }
+  if(temp== head) return true;
+
+  return false;
+}
+
 
 int main(){
     //circular
@@ -79,7 +91,12 @@ int main(){
     insertatmiddle(tail, 4, 5);
     printLL(tail);
 
-    deleteLL(tail, 3);
-    printLL(tail);
+    // deleteLL(tail, 3);
+    // printLL(tail);
+
+    bool ans = iscircular(tail);
+    cout<<"is circular or not "<< ans<<endl;
+
+
   return 0;
 }

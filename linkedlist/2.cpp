@@ -85,6 +85,18 @@ void printLL(Node* &head){
   cout<<endl;
 }
 
+bool iscircular(Node* &head){
+  if(head==NULL) return true;
+
+  Node* temp = head->next;
+  while(temp!=NULL && temp!=head){
+    temp= temp->next;
+  }
+  if(temp== head) return true;
+
+  return false;
+}
+
 int main(){
     //single linkedlist
     Node* node1= new Node(10);
@@ -101,6 +113,9 @@ int main(){
 
     deletionNode(4, head);
     printLL(head);
+
+    bool ans = iscircular(head);
+    cout<<"is circular or not "<<ans<<endl;
  
   return 0;
 }
