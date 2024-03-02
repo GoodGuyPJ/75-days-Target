@@ -30,11 +30,39 @@ void insertAtTail(Node* &tail, int d){
   cout<<endl;
 }
 
+bool detectcycle(Node* &head){
+    if(head==NULL) return false;
+    map<Node*, bool> visited;
+    Node* temp = head;
+    while(temp!=NULL){
+        if(visited[temp]== true){
+            return true;
+        }
+        visited[temp] = true;
+        temp = temp->next;
+    }
+    return false;
+}
 
-
+bool floyedcycle(Node* &head){
+    if(head==NULL) return false;
+    Node* slow = head;
+    Node* fast = head;
+    while(slow!=NULL && fast!=NULL){
+        fast= fast->next;
+        if(fast!= NULL){
+            fast = fast->next;
+        }
+        slow= slow->next;
+        if(fast == slow){
+            return true;
+        }
+    }
+    return false;
+}
 
 int main(){
-    //find reverse ll in K- Groups
+    //Detect cycle in Linked list
     Node* node1= new Node(1);
     Node* head = node1;
     Node* tail= node1;
@@ -43,8 +71,12 @@ int main(){
     insertAtTail(tail, 4);
     insertAtTail(tail, 5);
     insertAtTail(tail, 6);
-  printLL(head);
+    printLL(head);
     
+    bool ans1 = detectcycle(head);
+    cout<<"detect cycle using approch 1 "<< ans1<<endl;
+    bool ans2 = floyedcycle(head);
+    cout<<"detect cycle using approch 2 (floyed cycle) "<< ans2<<endl;
     
 
   return 0;
