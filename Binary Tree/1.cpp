@@ -28,12 +28,34 @@ using namespace std;
 
     return root;
  }
+
+ void levelOrderTraversal(node* root){
+    queue<node*> q;
+    q.push(root);
+
+    while(!q.empty()){
+        node* temp = q.front();
+        cout<<temp-> data<< " ";
+        q.pop();
+
+        if(temp->left){
+            q.push(temp->left);
+        }
+        if(temp->right){
+            q.push(temp->right);
+        }
+    }
+ }
  
 int main(){
     node* root  =NULL;
 
     //creating a tree
     root = buildTree(root);
+
+    //create levelordertravesal
+    cout<<"the level order traversal is "<<endl;
+    levelOrderTraversal(root);
  
   return 0;
 }
