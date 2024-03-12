@@ -22,10 +22,18 @@ using namespace std;
         return NULL;
     }
     cout<<"Enter data for inserting in left of "<<data<<endl;
+    root->left = buildTree(root->left);
+    cout<<"Enter data for inserting in right of "<<data<<endl;
+    root->right = buildTree(root->right);
+
+    return root;
  }
  
 int main(){
-    
+    node* root  =NULL;
+
+    //creating a tree
+    root = buildTree(root);
  
   return 0;
 }
