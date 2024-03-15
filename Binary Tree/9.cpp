@@ -24,7 +24,7 @@ class Solution{
                 Node* frontNode = q.front();
                 q.pop();
                 
-                //mormal insert or reverse insert
+                //normal insert or reverse insert
                 int index = leftToRight ? i : size-i-1;
                 ans[index] = frontNode -> data;
                 
