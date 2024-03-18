@@ -208,4 +208,52 @@ int main() {
    return 0;
 }
 // } Driver Code Ends
- */
+ 
+
+
+
+
+
+
+
+
+
+
+
+pair<int, int> predecessorSuccessor(TreeNode *root, int key)
+{
+     //find key
+     TreeNode* temp = root;
+     long long pred = -1;
+     long long succ= -1;
+     
+     while(temp->data != key){
+         if(temp->data > key){
+             succ=temp->data;
+             temp = temp->left;
+         }
+         else{
+             pred= temp->data;
+             temp  = temp->right;
+         }
+     }
+
+     //pred and succ
+     //pred
+     TreeNode* leftTree = temp ->left;
+     while(leftTree!=NULL){
+         pred = leftTree->data;
+         leftTree = leftTree->right;
+     }
+
+     //succ
+     TreeNode* rightTree = temp ->right;
+     while(rightTree!=NULL){
+         succ = rightTree->data;
+         rightTree= rightTree->left;
+     }
+
+    // pair<int, int> ans = make_pair(pred, succ);
+    // return ans;
+     return {pred, succ};
+}
