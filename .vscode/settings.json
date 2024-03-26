@@ -5,6 +5,9 @@
         "ostream": "cpp",
         "iostream": "cpp",
         "stack": "cpp",
-        "xstring": "cpp"
+        "xstring": "cpp",
+        "deque": "cpp",
+        "format": "cpp",
+        "list": "cpp"
     }
 }
