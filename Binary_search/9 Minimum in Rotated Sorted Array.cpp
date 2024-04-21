@@ -3,27 +3,22 @@ using namespace std;
  
  int miniEle(int arr[], int n){
     int l=0, h= n-1;
+    int ans = INT_MAX;
     while(l<=h){
         int mid= l+(h-l)/2;
-        if(arr[mid]<arr[mid-1] && arr[mid]>arr[mid+1]){
-            return arr[mid];
+        if(arr[l] <= arr[h]){
+            ans = min(ans, arr[l]);
+            break;
         }
-        else if(arr[mid]){
-
+        if(arr[l] <= arr[mid]){
+            ans = min(ans, arr[l]);
+            l = mid+1;
         }
-
-
-    //left sorted
-    if(arr[l]<= arr[mid]){
-
-    }
-
-
-    //right sorted
-
-
-
-
+        else{
+            h= mid-1;
+            ans = min(ans, arr[mid]);
+        }
+        return ans;
     }
  }
 
